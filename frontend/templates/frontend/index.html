@@ -1,0 +1,57 @@
+{% load static %}
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <style>
+            #myImg img{
+                height: 250px;
+                margin: 10px;
+            }
+        </style>
+        <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+        <title>Document</title>
+    </head>
+    <body style="text-align:center">
+
+      <h1>Image Caption Generator</h1>
+      <div>
+      <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+       <h4> Please upload your image </h4>
+	        <label class="document">
+            <input type="file" name="document" id="document" required="required">
+            <button id="submit" class="btn-primary" onClick="showLoader()"> Generate Caption</button>
+            </label>
+		 </form><br>
+    
+        <div id="myImg"></div>
+        <div>Caption for Image is:</div>
+        <div> <h3> {{des}} </h3></div>
+      </div>
+    </body>
+
+
+
+    <script>
+        $(function() {
+      $(":file").change(function() {
+        if (this.files && this.files[0]) {
+          for (var i = 0; i < this.files.length; i++) {
+            var reader = new FileReader();
+            reader.onload = imageIsLoaded;
+            reader.readAsDataURL(this.files[i]);
+          }
+        }
+      });
+    });
+    
+    function imageIsLoaded(e) {
+      $('#myImg').append('<img src=' + e.target.result + '>');
+    };
+    </script>
+    <script src="{% static 'frontend/main.js' %}"></script>
+</html>
