@@ -21,12 +21,12 @@ STATIC_ROOT = os.path.normpath(os.path.join(BASE_DIR, 'frontend', 'static'))
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-8nqi-nk7@vkp-(-br2w3p)vx_1ed*pi_45@_b%^iiq%+5s2^e3'
-
+SECRET_KEY = os.environment['key']
+#django-insecure-8nqi-nk7@vkp-(-br2w3p)vx_1ed*pi_45@_b%^iiq%+5s2^e3
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['young-dawn-84946.herokuapp.com', 'localhost']
 
 
 # Application definition
