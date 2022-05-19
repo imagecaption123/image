@@ -1,4 +1,4 @@
-pipabsl-py
+absl-py
 asgiref==3.5.2
 astunparse==1.6.3
 cachetools==5.1.0
