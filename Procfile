@@ -1,1 +1,2 @@
-web: waitress-serve --port=8000 project.wsgi:application
+web: python manage.py collectstatic --no-input;
+web: gunicorn proje.wsgi
